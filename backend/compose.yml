@@ -1,0 +1,34 @@
+services:
+  api:
+    build: .
+    container_name: stockflow-fastapi
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+
+  db:
+    image: postgres:16
+    container_name: stockflow-db
+    environment:
+      POSTGRES_USER: stockflow_user
+      POSTGRES_PASSWORD: stockflow_password
+      POSTGRES_DB: stockflow_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U stockflow_user -d stockflow_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
