@@ -1,10 +1,13 @@
+# main.py
 from fastapi import FastAPI
 
-app = FastAPI()
+from routers.api import api_router
+
+app = FastAPI(title="Stockflow API")
+
+app.include_router(api_router)
 
 
 @app.get("/")
 async def home():
-    return {
-        "message": "FastAPI corriendo en Docker"
-    }
+    return {"message": "Stockflow API corriendo"}
