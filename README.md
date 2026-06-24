@@ -55,6 +55,17 @@ The project is built with **FastAPI**, **SQLAlchemy**, **Alembic**, **Vue 3**, *
 
 ---
 
+## Demo
+
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=IgxghIRCrqA">
+    <img src="https://img.youtube.com/vi/IgxghIRCrqA/maxresdefault.jpg" alt="Stockflow Demo" width="80%"/>
+  </a>
+  <p><em>Click to watch the full system walkthrough on YouTube</em></p>
+</div>
+
+---
+
 ## Core Features
 
 - JWT-based authentication with role-based access control
